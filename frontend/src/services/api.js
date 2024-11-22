@@ -1,7 +1,7 @@
 // /src/services/api.js
 import axios from 'axios';
 
-const API_URL = 'https://vrvsecurity-backend-kg4qdf795.vercel.app/api';
+const API_URL = 'https://vrvsecurity-backend-e0tg4h845.vercel.app/api';
 
 export const getUsers = () => axios.get(`${API_URL}/users`);
 export const createUser = (userData) => axios.post(`${API_URL}/users`, userData);

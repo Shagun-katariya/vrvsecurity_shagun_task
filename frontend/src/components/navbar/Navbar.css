@@ -1,0 +1,60 @@
+/* Navbar Container */
+.navbar-container {
+  background-color: #4a90e2; /* Soft blue background */
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+.navbar-title h1 {
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+/* Buttons container */
+.navbar-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+/* Button styles */
+.navbar-buttons a {
+  background: linear-gradient(135deg, #4a90e2, #50e3c2); /* Reverse the gradient on hover */
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Active button style */
+.navbar-buttons a.active {
+  background-color: black; /* Yellow-orange for active (stands out but still warm) */
+  color: white;
+}
+
+/* Hover effect for buttons */
+.navbar-buttons a:hover {
+  background: linear-gradient(135deg, #50e3c2, #4a90e2); /* Reverse the gradient on hover */
+  transform: translateY(-4px); /* Lift effect */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 15px;
+  }
+
+  .navbar-title h1 {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+}
+

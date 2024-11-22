@@ -1,0 +1,393 @@
+.user-list {
+  background: #f4f7fc; /* Soft background color */
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Title styling */
+.title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.add-btn {
+  background: linear-gradient(
+    135deg,
+    #4a90e2,
+    #50e3c2
+  ); /* Gradient between rich blue and teal */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px; /* Fully rounded edges for a sleek look */
+  font-size: 1.2rem;
+  text-align: center;
+  display: inline-block;
+  border: 0;
+  margin-left: -0.5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transitions for multiple properties */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+.add-btn a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.add-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #50e3c2,
+    #4a90e2
+  ); /* Reverse the gradient on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.add-btn:active {
+  transform: translateY(2px); /* Slight push effect when clicked */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lighter shadow when active */
+}
+
+/* Search Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* space between elements */
+  margin-bottom: 20px; /* space below the container */
+}
+
+/* Styling for the dropdown menus */
+.status-dropdown,
+.role-dropdown {
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus state for dropdowns */
+.status-dropdown:focus,
+.role-dropdown:focus {
+  border-color: #4caf50;
+}
+
+/* Styling for the search input */
+.search-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+
+/* Focus state for search input */
+.search-input:focus {
+  border-color: #4caf50;
+}
+
+/* Styling for the search button */
+.search-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #50e3c2, #4a90e2);
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for search button */
+.search-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #50e3c2,
+    #4a90e2
+  ); /* Reverse the gradient on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Add some hover effects for the dropdowns and input elements */
+.status-dropdown:hover,
+.role-dropdown:hover,
+.search-input:hover {
+  border-color: #388e3c;
+}
+
+.search-btn:hover {
+  background-color: #388e3c;
+}
+
+.no-users-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Ensure it spans the full width */
+}
+
+.no-users-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f44336; /* Red color for emphasis */
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ffebee; /* Light red background */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.refresh-btn {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 7px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Required for positioning the tooltip */
+  transition: background-color 0.3s ease;
+}
+
+.refresh-btn:hover {
+  background-color: #f1f1f1;
+}
+
+/* Tooltip styling */
+.refresh-btn::after {
+  content: "Refresh"; /* Tooltip text */
+  position: absolute;
+  bottom: -30px; /* Position below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333; /* Dark background for tooltip */
+  color: #fff; /* White text color */
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  opacity: 0; /* Hidden by default */
+  visibility: hidden;
+  white-space: nowrap;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show the tooltip on hover */
+.refresh-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.refresh-btn:focus {
+  outline: none;
+}
+
+.refresh-btn svg {
+  color: #2196f3; /* Blue color for the refresh icon */
+}
+
+.search-header {
+  display: flex;
+  justify-content: space-between; /* Distribute space between left and right */
+  align-items: center; /* Center items vertically */
+}
+
+/* Grid layout for user cards */
+.user-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Individual User Card Styling */
+.user-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user-card:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* User Info Styling */
+.user-info h3 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.user-info p {
+  color: #666; /* Lighter text for less important details */
+  font-size: 1.1rem;
+  margin: 6px 0;
+}
+
+/* Actions Section (Edit/Delete Buttons) */
+.user-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Edit Button - Green */
+.edit-btn,
+.delete-btn {
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+}
+
+/* Edit Button with Green Color Combination */
+.edit-btn {
+  background: linear-gradient(
+    135deg,
+    #4a90e2,
+    #50e3c2
+  ); /* Gradient for edit button */
+}
+
+.edit-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #50e3c2,
+    #4a90e2
+  ); /* Reverse gradient on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+}
+
+/* Delete Button - Light Red */
+.delete-btn {
+  background: linear-gradient(135deg, #e7c2c5, #ee7984); /* Soft red gradient */
+}
+
+.delete-btn:hover {
+  background: linear-gradient(
+    135deg,
+    #ee9ba3,
+    #e44754
+  ); /* Reverse gradient on hover */
+  transform: translateY(-4px); /* Slight lift effect */
+}
+
+/* Active State */
+.edit-btn:active,
+.delete-btn:active {
+  transform: translateY(2px); /* Slight push effect when clicked */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lighter shadow on active */
+}
+
+.button-wrapper {
+  display: flex;
+  height: 33px;
+  gap: 10px;
+}
+
+@media (max-width: 1000px) {
+  .search-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure it takes full width */
+  }
+
+  .add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto; /* Ensures it's centered horizontally */
+    margin-bottom: 10px;
+  }
+
+  .search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
+@media (max-width: 711px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .user-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+  }
+
+  /* Wrapper to align dropdowns side by side */
+  .select-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 80%; /* Same width as the search input */
+    justify-content: center;
+  }
+
+  .status-dropdown,
+  .role-dropdown {
+    width: 100%; /* Adjust width to be almost the same as search input, with a small gap */
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .search-input {
+    width: 96%;
+    padding: 12px;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  .search-btn {
+    margin-right: 10px;
+  }
+
+  .refresh-btn {
+    display: inline-flex;
+    align-items: center;
+  }
+}

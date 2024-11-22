@@ -1,0 +1,191 @@
+/* Role Form Container */
+.role-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.role-form:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading Style */
+.role-form h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Label Style */
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Input Fields */
+.form-group input {
+  width: 95%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1.1rem;
+  color: #555;
+  background-color: #fafafa;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #38d9a9;
+  background-color: #f8fffc;
+  box-shadow: 0 0 4px rgba(56, 217, 169, 0.4);
+}
+
+/* Multi-Select Dropdown Styling */
+.react-select-container {
+  font-size: 1rem;
+  color: #555;
+}
+
+.react-select__control {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 4px 8px;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.react-select__control:hover,
+.react-select__control--is-focused {
+  border-color: #38d9a9;
+  background-color: #f8fffc;
+  box-shadow: 0 0 4px rgba(56, 217, 169, 0.4);
+}
+
+.react-select__menu {
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  background-color: #ffffff;
+  margin-top: 5px;
+}
+
+.react-select__option {
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.react-select__option--is-focused {
+  background-color: #eafff5;
+  color: #333;
+}
+
+.react-select__option--is-selected {
+  background-color: #38d9a9;
+  color: white;
+  font-weight: bold;
+}
+
+.react-select__multi-value {
+  background-color: #f0fcfa;
+  border: 1px solid #38d9a9;
+  border-radius: 5px;
+  padding: 3px 8px;
+}
+
+.react-select__multi-value__label {
+  color: #38d9a9;
+}
+
+.react-select__multi-value__remove:hover {
+  background-color: #eafff5;
+  color: #38d9a9;
+  cursor: pointer;
+}
+
+/* Custom Permission Input */
+.custom-permission-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #555;
+  background-color: #fafafa;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.custom-permission-input:focus {
+  border-color: #38d9a9;
+  background-color: #f8fffc;
+  box-shadow: 0 0 4px rgba(56, 217, 169, 0.4);
+}
+
+/* Permissions Group Styling */
+.permissions-group {
+  margin-top: 20px;
+}
+
+.permissions-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.select-container {
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #38d9a9;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2cae87;
+}
+
+.submit-btn:active {
+  background-color: #1b7e63;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .role-form {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+  }
+}

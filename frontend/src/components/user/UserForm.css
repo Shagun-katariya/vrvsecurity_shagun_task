@@ -1,0 +1,123 @@
+/* Form Container */
+.user-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 25px;
+  background: linear-gradient(145deg, #f5f7fa, #e3e9f0); /* Soft gradient background */
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-form:hover {
+  transform: translateY(-10px); /* Smooth lifting effect on hover */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+/* Heading Style */
+.user-form h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 25px;
+}
+
+/* Labels */
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Styling Input and Select Fields */
+.form-group input,
+.form-group select {
+  width: 90%;
+  padding: 14px 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1.1rem;
+  background-color: #fff;
+  color: #555;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #50e3c2; /* Soft green on focus */
+  background-color: #f9f9f9;
+}
+
+/* Input Placeholder Styling */
+.form-group input::placeholder {
+  color: #bbb;
+  font-style: italic;
+}
+
+/* Layout for Role and Status Fields Side-by-Side */
+.form-group.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px; /* Add space between the fields */
+}
+
+.form-group.row .form-group {
+  width: 48%; /* Ensure each field takes almost half the space */
+}
+
+/* Button Styling */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #4a90e2, #50e3c2); /* Gradient blue-green background */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #357ab7, #2ab9b0); /* Darker gradient on hover */
+  transform: translateY(-3px); /* Smooth lift effect */
+}
+
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow on focus */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-form {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+  }
+
+  /* Stack the Role and Status fields on smaller screens */
+  .form-group.row {
+    flex-direction: column;
+  }
+
+  .form-group.row .form-group {
+    width: 100%; /* Ensure full width on small screens */
+  }
+}

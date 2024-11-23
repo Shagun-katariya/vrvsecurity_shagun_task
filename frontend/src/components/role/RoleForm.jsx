@@ -23,7 +23,8 @@ const RoleForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const animatedComponents = makeAnimated();
-
+  const loading = isFetching || isSubmitting;
+  
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
@@ -129,7 +130,6 @@ const RoleForm = () => {
     );
   }, [customPermissions, permissions]);
 
-  const loading = isFetching || isSubmitting;
 
   return (
     <div className="role-form">

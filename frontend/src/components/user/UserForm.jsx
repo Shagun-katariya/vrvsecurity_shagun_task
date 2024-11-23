@@ -23,26 +23,42 @@ const UserForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // setLoading(true);
-    fetchRoles();
+    let isMounted = true; // For cleanup
+    const fetchData = async () => {
+      setLoading(true); // Start loading
+      let fetchError = false;
 
-    if (id) {
-      fetchUser();
-      setIsEdit(true);
-    }
+      try {
+        await fetchRoles();
+        if (id) {
+          await fetchUser();
+          setIsEdit(true);
+        }
+      } catch (error) {
+        fetchError = true;
+      } finally {
+        if (isMounted) setLoading(false); // End loading only after all calls
+      }
+
+      if (fetchError) {
+        toast.error("Failed to load data");
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false; // Cleanup to avoid state update on unmounted components
+    };
   }, [id]);
 
   const fetchRoles = async () => {
-    setLoading(true);
     try {
       const { data } = await getRoles();
       setRoles(data);
     } catch (error) {
-      toast.error("Error fetching roles")
       console.error("Error fetching roles:", error);
-      // setError("Failed to load roles. Please try again later.");
-    } finally {
-      setLoading(false);
+      throw error;
     }
   };
 
@@ -54,11 +70,8 @@ const UserForm = () => {
       setRole(data.role._id);
       setStatus(data.status);
     } catch (error) {
-      toast.error("Error fetching roles")
       console.error("Error fetching user:", error);
-      // setError("Failed to load user data. Please try again later.");
-    } finally {
-      setLoading(false);
+      throw error;
     }
   };
 
@@ -70,14 +83,14 @@ const UserForm = () => {
     try {
       if (isEdit) {
         await updateUser(id, userData);
-        toast.success("User update Successfully")
+        toast.success("User updated successfully!");
       } else {
         await createUser(userData);
-        toast.success("User create Successfully")
+        toast.success("User created successfully!");
       }
       navigate("/users");
     } catch (error) {
-      toast.error("Error saving user")
+      toast.error("Error saving user");
       console.error("Error saving user:", error);
     } finally {
       setLoading(false);

@@ -1,5 +1,10 @@
 /* /src/App.css */
 
+html, body {
+  overflow: hidden; /* Prevents scrolling while the loader is visible */
+}
+
+
 .App {
   font-family: Arial, sans-serif;
   margin: 0;

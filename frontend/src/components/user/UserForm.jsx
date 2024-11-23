@@ -58,7 +58,6 @@ const UserForm = () => {
     } catch (error) {
       toast.error("Error fetching roles")
       console.error("Error fetching roles:", error);
-      // setError("Failed to load roles. Please try again later.");
     }
   };
 
@@ -72,7 +71,6 @@ const UserForm = () => {
     } catch (error) {
       toast.error("Error fetching roles")
       console.error("Error fetching user:", error);
-      // setError("Failed to load user data. Please try again later.");
     }
   };
 

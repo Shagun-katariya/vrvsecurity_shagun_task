@@ -9,7 +9,7 @@ require("dotenv").config();
 const app = express();
 
 // Allow CORS from all origins (restrict later if needed)
-app.use(cors());
+app.use(cors({origin: "https://vrvsecurity-shagun-frontend.vercel.app/"}));
 
 // Parse JSON request bodies
 app.use(bodyParser.json());

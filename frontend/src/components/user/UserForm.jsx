@@ -18,29 +18,28 @@ const UserForm = () => {
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("Active");
   const [isEdit, setIsEdit] = useState(false);
-  const [loading, setLoading] = useState(false); // Loading state for form
+  const [rolesLoading, setRolesLoading] = useState(false); // Loading for roles
+  const [userLoading, setUserLoading] = useState(false); // Loading state for form
   const { id } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let isMounted = true; // For cleanup
-    const fetchData = async () => {
-      setLoading(true); // Start loading
-      let fetchError = false;
+  const loading = rolesLoading || userLoading;
 
+  useEffect(() => {
+    let isMounted = true;
+    const fetchData = async () => {
       try {
+        setRolesLoading(true);
         await fetchRoles();
+        setRolesLoading(false);
+
         if (id) {
+          setUserLoading(true);
           await fetchUser();
+          setUserLoading(false);
           setIsEdit(true);
         }
       } catch (error) {
-        fetchError = true;
-      } finally {
-        if (isMounted) setLoading(false); // End loading only after all calls
-      }
-
-      if (fetchError) {
         toast.error("Failed to load data. Please try again.");
       }
     };
@@ -48,7 +47,7 @@ const UserForm = () => {
     fetchData();
 
     return () => {
-      isMounted = false; // Cleanup to avoid state update on unmounted components
+      isMounted = false;
     };
   }, [id]);
 
@@ -80,7 +79,7 @@ const UserForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userData = { name, email, roleId: role, status };
-    setLoading(true);
+    setUserLoading(true);
 
     try {
       if (isEdit) {
@@ -95,7 +94,7 @@ const UserForm = () => {
       toast.error("Error saving user")
       console.error("Error saving user:", error);
     } finally {
-      setLoading(false);
+      setUserLoading(false);
     }
   };
 

@@ -41,7 +41,7 @@ const UserForm = () => {
       }
 
       if (fetchError) {
-        toast.error("Failed to load data");
+        toast.error("Failed to load data. Please try again.");
       }
     };
 
@@ -57,8 +57,9 @@ const UserForm = () => {
       const { data } = await getRoles();
       setRoles(data);
     } catch (error) {
+      toast.error("Error fetching roles")
       console.error("Error fetching roles:", error);
-      throw error;
+      // setError("Failed to load roles. Please try again later.");
     }
   };
 
@@ -70,8 +71,9 @@ const UserForm = () => {
       setRole(data.role._id);
       setStatus(data.status);
     } catch (error) {
+      toast.error("Error fetching roles")
       console.error("Error fetching user:", error);
-      throw error;
+      // setError("Failed to load user data. Please try again later.");
     }
   };
 
@@ -83,14 +85,14 @@ const UserForm = () => {
     try {
       if (isEdit) {
         await updateUser(id, userData);
-        toast.success("User updated successfully!");
+        toast.success("User update Successfully")
       } else {
         await createUser(userData);
-        toast.success("User created successfully!");
+        toast.success("User create Successfully")
       }
       navigate("/users");
     } catch (error) {
-      toast.error("Error saving user");
+      toast.error("Error saving user")
       console.error("Error saving user:", error);
     } finally {
       setLoading(false);

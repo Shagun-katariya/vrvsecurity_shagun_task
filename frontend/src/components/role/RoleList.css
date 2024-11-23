@@ -226,7 +226,6 @@
   .edit-btn {
     padding: 4px; /* Reduced padding */
     font-size: 0; /* Hide text */
-    width: 32px;
     height: 32px;
     background: none;
     border: none;

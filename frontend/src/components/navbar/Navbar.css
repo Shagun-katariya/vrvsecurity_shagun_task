@@ -4,9 +4,9 @@
   padding: 20px;
   text-align: center;
   border-radius: 10px;
-  position: sticky;
+/*   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1000; */
   margin-bottom: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

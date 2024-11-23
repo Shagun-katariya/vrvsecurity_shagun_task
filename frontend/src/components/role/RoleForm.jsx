@@ -24,28 +24,35 @@ const RoleForm = () => {
   const animatedComponents = makeAnimated();
 
   useEffect(() => {
-    if (id) {
-      fetchRole();
-      setIsEdit(true);
-    }
-  }, [id]);
+    let isMounted = true; // Ensure component is mounted
+    const fetchData = async () => {
+      if (id) {
+        setLoading(true); // Start loading
+        setIsEdit(true);
 
-  // Fetch role data for edit
-  const fetchRole = useCallback(async () => {
-    setLoading(true);
-    try {
-      const { data } = await getRoleById(id);
-      setName(data.name);
-      setPermissions(
-        data.permissions.map((perm) => ({ value: perm, label: perm }))
-      );
-      setDescription(data.description);
-    } catch (error) {
-      console.error("Error fetching role:", error);
-      toast.error("Error fetching role data");
-    } finally {
-      setLoading(false);
-    }
+        try {
+          const { data } = await getRoleById(id);
+          if (isMounted) {
+            setName(data.name);
+            setPermissions(
+              data.permissions.map((perm) => ({ value: perm, label: perm }))
+            );
+            setDescription(data.description);
+          }
+        } catch (error) {
+          console.error("Error fetching role:", error);
+          if (isMounted) toast.error("Error fetching role data");
+        } finally {
+          if (isMounted) setLoading(false); // End loading
+        }
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false; // Cleanup on unmount
+    };
   }, [id]);
 
   // Handle permissions selection

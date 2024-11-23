@@ -33,6 +33,7 @@ const UserForm = () => {
   }, [id]);
 
   const fetchRoles = async () => {
+    setLoading(true);
     try {
       const { data } = await getRoles();
       setRoles(data);

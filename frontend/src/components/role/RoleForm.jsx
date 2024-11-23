@@ -18,41 +18,34 @@ const RoleForm = () => {
   ]);
   const [description, setDescription] = useState("");
   const [isEdit, setIsEdit] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isFetching, setIsFetching] = useState(false); // Separate loading for data fetch
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
   const animatedComponents = makeAnimated();
 
   useEffect(() => {
-    let isMounted = true; // Ensure component is mounted
     const fetchData = async () => {
       if (id) {
-        setLoading(true); // Start loading
+        setIsFetching(true);
         setIsEdit(true);
-
         try {
           const { data } = await getRoleById(id);
-          if (isMounted) {
-            setName(data.name);
-            setPermissions(
-              data.permissions.map((perm) => ({ value: perm, label: perm }))
-            );
-            setDescription(data.description);
-          }
+          setName(data.name);
+          setPermissions(
+            data.permissions.map((perm) => ({ value: perm, label: perm }))
+          );
+          setDescription(data.description);
         } catch (error) {
           console.error("Error fetching role:", error);
-          if (isMounted) toast.error("Error fetching role data");
+          toast.error("Error fetching role data");
         } finally {
-          if (isMounted) setLoading(false); // End loading
+          setIsFetching(false);
         }
       }
     };
 
     fetchData();
-
-    return () => {
-      isMounted = false; // Cleanup on unmount
-    };
   }, [id]);
 
   // Handle permissions selection
@@ -77,7 +70,7 @@ const RoleForm = () => {
         );
 
         if (permissionExists) {
-          toast("Permission already exists. Please select it directly");
+          toast.warning("Permission already exists. Please select it directly");
         } else {
           setCustomPermissions((prevPermissions) => [
             ...prevPermissions,
@@ -98,12 +91,13 @@ const RoleForm = () => {
   // Submit the form
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     const roleData = {
       name,
       permissions: permissions.map((perm) => perm.value), // Extract permission values
       description,
     };
-    setLoading(true);
+    
 
     try {
       if (isEdit) {
@@ -118,7 +112,7 @@ const RoleForm = () => {
       console.error("Error saving role:", error);
       toast.error("Error saving role data");
     } finally {
-      setLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -134,6 +128,8 @@ const RoleForm = () => {
         !normalizedSelectedPermissions.includes(perm.value.toLowerCase())
     );
   }, [customPermissions, permissions]);
+
+  const isLoading = isFetching || isSubmitting;
 
   return (
     <div className="role-form">

@@ -3,7 +3,7 @@
 This is a Role Management System built with React, Express, and MongoDB, designed to manage user roles and permissions. The application allows administrators to create, update, and assign roles with associated permissions. The permissions are handled using a multi-select dropdown where users can select existing permissions or add custom ones. The roles are stored and updated in the backend, and users are notified of the changes through a dynamic interface.
 
                                                            Features
-
+ 
 Role Creation: Users can create roles with a specific name and description.
 Permission Management: Users can assign predefined permissions from a dropdown list or add custom permissions manually.
 Dynamic Form Updates: The form dynamically updates to reflect changes, such as adding or removing permissions.

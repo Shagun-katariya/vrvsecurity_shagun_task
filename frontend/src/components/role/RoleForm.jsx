@@ -129,7 +129,7 @@ const RoleForm = () => {
     );
   }, [customPermissions, permissions]);
 
-  const isLoading = isFetching || isSubmitting;
+  const loading = isFetching || isSubmitting;
 
   return (
     <div className="role-form">

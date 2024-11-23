@@ -23,7 +23,7 @@ const UserForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     fetchRoles();
 
     if (id) {

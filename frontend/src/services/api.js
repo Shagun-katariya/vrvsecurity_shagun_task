@@ -1,4 +1,3 @@
-// /src/services/api.js
 import axios from 'axios';
 
 const API_URL = 'https://vrvsecurity-backend.vercel.app/api';

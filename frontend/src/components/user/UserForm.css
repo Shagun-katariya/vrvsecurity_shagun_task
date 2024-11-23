@@ -2,6 +2,7 @@
 .user-form {
   width: 100%;
   max-width: 500px;
+  height: 100%;
   margin: 50px auto;
   padding: 25px;
   background: linear-gradient(145deg, #f5f7fa, #e3e9f0); /* Soft gradient background */
